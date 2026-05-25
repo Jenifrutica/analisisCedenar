@@ -2,17 +2,18 @@
 % INFORME FINAL -- CEDENAR
 % Universidad Cooperativa de Colombia, Campus Pasto
 % Análisis de Software -- Semestre III
+% Formato: APA 7
 %
 % INSTRUCCIONES PARA OVERLEAF:
 % Subir las siguientes imágenes antes de compilar:
-%   - diagrama_clases.png      (de la wiki, sección 3.1)
-%   - diagrama_paquetes.png    (de la wiki, sección 3.2)
-%   - diagrama_componentes.png (de la wiki, sección 3.3)
-%   - diagrama_despliegue.png  (de la wiki, sección 3.4)
-%   - diagrama_casos_uso.png   (de la wiki, sección 4.1)
-%   - diagrama_actividades.png (de la wiki, sección 4.2)
-%   - diagrama_secuencia.png   (de la wiki, sección 4.3)
-%   - maquina_estados.png      (de la wiki, sección 4.4)
+%   - diagrama_clases.png      (wiki, sección 3.1)
+%   - diagrama_paquetes.png    (wiki, sección 3.2)
+%   - diagrama_componentes.png (wiki, sección 3.3)
+%   - diagrama_despliegue.png  (wiki, sección 3.4)
+%   - diagrama_casos_uso.png   (wiki, sección 4.1)
+%   - diagrama_actividades.png (wiki, sección 4.2)
+%   - diagrama_secuencia.png   (wiki, sección 4.3)
+%   - maquina_estados.png      (wiki, sección 4.4)
 %   - vista_mobile.png         (archivo local: diagramas/vista mobile.png)
 %   - archimate.png            (diagrama ArchiMate, sección 2)
 % Compilar con pdfLaTeX
@@ -25,12 +26,15 @@
 \usepackage[T1]{fontenc}
 \usepackage[spanish, es-tabla]{babel}
 
-% --- Márgenes ---
-\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+% --- Fuente Times New Roman (APA 7) ---
+\usepackage{mathptmx}
 
-% --- Tipografía ---
-\usepackage{lmodern}
-\usepackage{microtype}
+% --- Márgenes APA 7: 2.54 cm todos los lados ---
+\usepackage[top=2.54cm, bottom=2.54cm, left=2.54cm, right=2.54cm]{geometry}
+
+% --- Interlineado 2.0 (APA 7) ---
+\usepackage{setspace}
+\doublespacing
 
 % --- Imágenes ---
 \usepackage{graphicx}
@@ -40,64 +44,22 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
-\usepackage{multirow}
 \usepackage{tabularx}
 
-% --- Código fuente ---
+% --- Código fuente sin color ---
 \usepackage{listings}
-\usepackage{xcolor}
-
-% --- Links ---
-\usepackage{hyperref}
-
-% --- Encabezados y pie de página ---
-\usepackage{fancyhdr}
-
-% --- Cajas ---
-\usepackage{tcolorbox}
-\tcbuselibrary{skins}
-
-% --- Espaciado ---
-\setlength{\parskip}{6pt}
-\setlength{\parindent}{0pt}
-
-% --- Colores ---
-\definecolor{cedenarblue}{RGB}{0, 70, 127}
-\definecolor{cedenarorange}{RGB}{230, 115, 0}
-\definecolor{codecomment}{rgb}{0.45, 0.45, 0.45}
-\definecolor{codestring}{rgb}{0.13, 0.47, 0.13}
-\definecolor{codekeyword}{rgb}{0.1, 0.1, 0.75}
-\definecolor{codebackground}{rgb}{0.97, 0.97, 0.97}
-\definecolor{gherkin}{rgb}{0.96, 0.96, 0.98}
-
-% --- Kotlin listings ---
-\lstdefinelanguage{Kotlin}{
-  keywords={fun, val, var, return, when, if, else, data, class, enum, interface,
-            require, throw, copy, null, true, false, is, as, in, for, while,
-            object, companion, override, private, public, internal, sealed},
-  keywordstyle=\color{codekeyword}\bfseries,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{codecomment}\itshape,
-  stringstyle=\color{codestring},
-  morestring=[b]",
-  sensitive=true
-}
 
 \lstset{
-  language=Kotlin,
-  backgroundcolor=\color{codebackground},
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\small,
   breaklines=true,
   breakatwhitespace=true,
   frame=single,
-  rulecolor=\color{gray!40},
   xleftmargin=12pt,
   xrightmargin=6pt,
-  aboveskip=8pt,
-  belowskip=8pt,
+  aboveskip=6pt,
+  belowskip=6pt,
   numbers=left,
-  numberstyle=\tiny\color{gray},
+  numberstyle=\tiny,
   numbersep=8pt,
   tabsize=4,
   showstringspaces=false,
@@ -105,91 +67,103 @@
   keepspaces=true
 }
 
-% Estilo Gherkin (plain text)
-\lstdefinestyle{gherkin}{
-  language={},
-  backgroundcolor=\color{gherkin},
-  basicstyle=\ttfamily\scriptsize,
-  frame=none,
-  numbers=none,
-  xleftmargin=6pt,
-  xrightmargin=6pt,
-  breaklines=true
-}
+% --- Párrafos APA 7 ---
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
 
-% --- Encabezado ---
+% --- Encabezado APA 7 ---
+\usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{gray} CEDENAR -- Sistema de Automatización de Lecturas}
-\fancyhead[R]{\small\color{gray} Análisis de Software | 2026}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
+\fancyhead[L]{\small SISTEMA DE AUTOMATIZACIÓN DE LECTURAS -- CEDENAR}
+\fancyhead[R]{\small \thepage}
+\renewcommand{\headrulewidth}{0pt}
 
-% --- Hyperref ---
+% --- Secciones APA 7: centradas, negrita, nivel 1 ---
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\bfseries\centering}{}{0em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape}{}{0em}{}
+\titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{0em}{}[.]
+
+% --- Links sin color ---
+\usepackage{hyperref}
 \hypersetup{
-  colorlinks=true,
-  linkcolor=cedenarblue,
-  urlcolor=cedenarblue,
-  citecolor=cedenarblue,
+  colorlinks=false,
+  pdfborder={0 0 0},
   pdftitle={Sistema de Automatización de Lecturas CEDENAR},
   pdfauthor={Urbano, Salazar, Diaz, Parra, Lopez}
+}
+
+% --- Captions APA 7 ---
+\usepackage{caption}
+\captionsetup{
+  labelfont=bf,
+  textfont=it,
+  labelsep=newline,
+  justification=raggedright,
+  singlelinecheck=false,
+  aboveskip=4pt
 }
 
 % ============================================================
 \begin{document}
 
 % ============================================================
-% PORTADA
+% PORTADA APA 7
 % ============================================================
 \begin{titlepage}
   \centering
-  \vspace*{0.5cm}
+  \vspace*{3cm}
 
-  {\large Universidad Cooperativa de Colombia \\ Campus Pasto\par}
-  \vspace{0.3cm}
-  {\normalsize Ingeniería de Software -- Semestre III \\ Análisis de Software\par}
-
-  \vspace{1.5cm}
-  \rule{\textwidth}{1.5pt}
-  \vspace{0.4cm}
-
-  {\Huge\bfseries\color{cedenarblue}
-    Sistema de Automatización\\[4pt]
-    de Lecturas de Medidores\par}
-
-  \vspace{0.3cm}
-  {\Large\bfseries\color{cedenarorange}
-    CEDENAR -- Centrales Eléctricas de Nariño\par}
-
-  \vspace{0.4cm}
-  \rule{\textwidth}{1.5pt}
-
-  \vspace{1.2cm}
-  {\large Taller Final: Proyecto Libre para Aplicación\\
-  de Conocimientos del Curso\par}
-
-  \vspace{1.5cm}
-
-  \begin{tabular}{@{}ll@{}}
-    \textbf{Integrantes:} & Jenifer Daniela Urbano Córdoba \\
-                          & Drako David Salazar Torres \\
-                          & Nicolas Alejandro Diaz Acosta \\
-                          & Cristhian Santiago Parra Erazo \\
-                          & Juan Camilo Lopez Diaz \\[8pt]
-    \textbf{Docente:}     & Oscar Andrés Osorio \\[4pt]
-    \textbf{Fecha:}       & 25 de mayo de 2026 \\
-  \end{tabular}
-
-  \vfill
-
-  {\small
-    Repositorio: \url{https://github.com/Jenifrutica/analisisCedenar} \\[2pt]
-    Wiki: \url{https://github.com/Jenifrutica/analisisCedenar/wiki}
+  {\large\bfseries
+    Sistema de Automatización de Lecturas de Medidores de Energía\\
+    para las Centrales Eléctricas de Nariño (CEDENAR)
   \par}
+
+  \vspace{1.5cm}
+
+  {\normalsize
+    Jenifer Daniela Urbano Córdoba, Drako David Salazar Torres,\\
+    Nicolas Alejandro Diaz Acosta, Cristhian Santiago Parra Erazo\\
+    y Juan Camilo Lopez Diaz
+  \par}
+
+  \vspace{1cm}
+
+  {\normalsize
+    Programa de Ingeniería de Software, Semestre III\\
+    Universidad Cooperativa de Colombia, Campus Pasto
+  \par}
+
+  \vspace{1cm}
+
+  {\normalsize
+    Análisis de Software\\
+    Oscar Andrés Osorio
+  \par}
+
+  \vspace{1cm}
+
+  {\normalsize 25 de mayo de 2026\par}
 
 \end{titlepage}
 
 % ============================================================
+% RESUMEN
+% ============================================================
+\newpage
+\begin{center}
+  \textbf{Resumen}
+\end{center}
+
+\noindent Este informe documenta el análisis y diseño de un sistema de software para automatizar la toma de lecturas de medidores de energía eléctrica en las Centrales Eléctricas de Nariño (CEDENAR). El proceso actual presenta tres problemas concretos: dependencia de conectividad continua durante las jornadas de campo, ausencia de canal formal para que los clientes reporten fallas o aclaren cobros, y uso de papel e impresora manual para los comprobantes. La solución propuesta es una aplicación móvil con arquitectura \textit{offline-first} para el operario de campo y un portal web para el cliente. El análisis cubre levantamiento de requerimientos funcionales y no funcionales, seis historias de usuario con criterios de aceptación en Gherkin, modelado de arquitectura empresarial con ArchiMate, seis diagramas UML estáticos y dinámicos, aplicación de la metodología Design Thinking con benchmarking de soluciones existentes, un prototipo de alta fidelidad en Figma y fragmentos de código en Kotlin que ilustran la lógica de negocio central.
+
+\vspace{6pt}
+\noindent\textbf{Palabras clave:} automatización de lecturas, arquitectura \textit{offline-first}, análisis de software, UML, Design Thinking.
+
+% ============================================================
+\newpage
 \tableofcontents
 \newpage
 
@@ -199,20 +173,24 @@
 
 \subsection{Contexto del Problema}
 
-CEDENAR opera en el departamento de Nariño con recaudadores instaladores que recorren zonas urbanas y rurales tomando lecturas de medidores. El proceso depende de una terminal portátil que descarga los datos del sector antes de cada jornada y necesita conexión continua para funcionar. Cuando la señal cae o la pantalla se refresca por accidente, el dispositivo puede congelarse hasta 15 minutos y el operario pierde el avance del día.
+\noindent CEDENAR opera en el departamento de Nariño con recaudadores instaladores que recorren zonas urbanas y rurales tomando lecturas de medidores de energía eléctrica. El proceso depende de una terminal portátil que descarga los datos del sector antes de cada jornada y requiere conexión activa al servidor para operar. Cuando la señal cae o la pantalla del dispositivo se refresca de manera accidental, el equipo puede congelarse hasta 15 minutos y el operario pierde el avance registrado hasta ese momento.
 
-Del lado del cliente, no existe canal formal para aclarar cobros ni reportar cortes de luz. La única opción es ir a la casa del recaudador instalador del barrio o mandar un mensaje por WhatsApp personal al técnico, sin recibir radicado ni seguimiento.
+Del lado del cliente residencial, no existe canal formal para aclarar cobros ni reportar interrupciones del servicio. La única alternativa disponible es acudir directamente a la residencia del recaudador instalador del sector o enviar un mensaje por WhatsApp personal al técnico de zona, sin que se genere radicado ni seguimiento alguno.
 
-Este proyecto propone digitalizar ese proceso con dos productos: una app móvil offline-first para el operario de campo y un portal web para el cliente, con tres actores: cliente residencial, recaudador instalador y administrador.
+El presente proyecto propone digitalizar ese proceso mediante dos productos: una aplicación móvil con funcionamiento autónomo sin conexión para el operario de campo, y un portal web para el cliente. Los tres actores del sistema son el cliente residencial, el recaudador instalador y el administrador del sistema.
 
 \subsection{Requerimientos Funcionales}
 
-\begin{longtable}{p{1.3cm} p{3cm} p{8.5cm} p{1.5cm}}
+Los requerimientos funcionales se identificaron a partir de la observación directa del proceso operativo y de entrevistas con el personal de campo y clientes activos de CEDENAR.
+
+\begin{longtable}{p{1.2cm} p{3cm} p{9cm} p{1.5cm}}
+  \caption{Requerimientos Funcionales del Sistema} \\
   \toprule
   \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prior.} \\
   \midrule
   \endfirsthead
-  \midrule
+  \caption[]{Requerimientos Funcionales del Sistema (continuación)} \\
+  \toprule
   \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prior.} \\
   \midrule
   \endhead
@@ -220,46 +198,51 @@ Este proyecto propone digitalizar ese proceso con dos productos: una app móvil 
   \endfoot
 
   RF-01 & Registro e inicio de sesión &
-    Correo y cédula únicos. Contraseña almacenada cifrada (nunca en texto plano).
+    Correo electrónico y número de cédula únicos en la base de datos.
+    Contraseña almacenada mediante hash seguro, nunca en texto plano.
     Correo de confirmación automático al completar el registro.
-    Mensajes de error por campo. &
+    Mensajes de error descriptivos por campo. &
     Must \\[4pt]
 
   RF-02 & Consulta de saldo y pago &
-    Consulta de factura por NIU en máximo 3 segundos.
-    Integración con PSE, tarjeta de crédito y billeteras digitales.
-    Recibo PDF con firma digital descargable.
-    Estado de pago actualizado tras confirmación de pasarela. &
+    Consulta del estado de cuenta por NIU en máximo tres segundos.
+    Integración con pasarela que soporte PSE, tarjeta de crédito y billeteras digitales.
+    Recibo en PDF con firma digital descargable.
+    Actualización del estado de pago tras confirmación de la pasarela. &
     Must \\[4pt]
 
   RF-03 & Reporte de fallas técnicas &
-    GPS automático con fallback a \texttt{codigoContrato} si no hay señal.
-    Radicado único generado y enviado al módulo de despacho técnico por zona.
-    Notificación al cliente con número de caso. &
+    Captura de coordenadas GPS con \textit{fallback} a \texttt{codigoContrato} cuando el permiso de ubicación no está disponible.
+    Generación de radicado único y envío al módulo de despacho técnico por zona geográfica.
+    Notificación al cliente con número de caso asignado. &
     Must \\[4pt]
 
   RF-04 & Historial de consumo &
-    Gráfica comparativa de los últimos 6 meses vs. el año anterior.
-    Alerta visible si el consumo supera el promedio histórico en más del 20\%.
-    Tiempo de carga máximo 3 segundos. &
+    Gráfica comparativa de los últimos seis meses frente al mismo período del año anterior.
+    Alerta visible cuando el consumo supera el promedio histórico en más del 20\%.
+    Tiempo máximo de carga de tres segundos. &
     Should \\[4pt]
 
-  RF-05 & Recorrido del recaudador &
-    Lista de predios por jornada, captura por QR o digitación manual,
-    foto del medidor como evidencia, validación semáforo contra histórico,
-    envío del recibo por WhatsApp o correo, funcionamiento sin conexión
-    con sincronización automática al recuperar señal. &
+  RF-05 & Gestión del recorrido &
+    Lista de predios asignados por jornada con datos del cliente y ubicación.
+    Captura de lectura por escaneo de código QR o digitación manual.
+    Fotografía del medidor como evidencia adjunta.
+    Validación del valor ingresado contra el histórico con indicador semáforo.
+    Envío del comprobante por WhatsApp o correo electrónico.
+    Funcionamiento sin conexión con sincronización automática al recuperar señal. &
     Must \\
 \end{longtable}
 
 \subsection{Requerimientos No Funcionales}
 
-\begin{longtable}{p{1.3cm} p{3cm} p{9.5cm}}
+\begin{longtable}{p{1.2cm} p{3cm} p{9.5cm}}
+  \caption{Requerimientos No Funcionales del Sistema} \\
   \toprule
   \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} \\
   \midrule
   \endfirsthead
-  \midrule
+  \caption[]{Requerimientos No Funcionales del Sistema (continuación)} \\
+  \toprule
   \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} \\
   \midrule
   \endhead
@@ -267,141 +250,166 @@ Este proyecto propone digitalizar ese proceso con dos productos: una app móvil 
   \endfoot
 
   RNF-01 & Disponibilidad &
-    99.9\% de uptime anual. Módulos de reporte de emergencias activos 24/7. \\[4pt]
+    Tiempo de actividad del 99.9\% anual.
+    Los módulos de reporte de emergencias disponibles de forma continua las 24 horas los 7 días de la semana. \\[4pt]
 
   RNF-02 & Seguridad &
-    TLS 1.3 en tránsito, AES-256 en reposo.
-    Doble factor para acceso administrativo a la base de datos. \\[4pt]
+    Protocolo TLS 1.3 para datos en tránsito, AES-256 para datos en reposo.
+    Autenticación de doble factor para el acceso administrativo a la base de datos. \\[4pt]
 
   RNF-03 & Rendimiento &
-    Consultas de saldo, historial y radicado en máximo 3 segundos.
-    Caché en servidor y consultas indexadas. \\[4pt]
+    Cualquier consulta de saldo, historial o estado de radicado debe resolverse en máximo tres segundos.
+    Se aplica caché en servidor y consultas indexadas a la base de datos. \\[4pt]
 
   RNF-04 & Usabilidad en campo &
-    App funciona offline y sincroniza sola al recuperar señal.
+    La aplicación opera sin conexión y sincroniza de forma autónoma al recuperar señal.
     Elementos táctiles de tamaño adecuado para uso en exteriores.
-    Acceso a cámara directo sin abrir otra app. \\[4pt]
+    Acceso a la cámara del dispositivo directo, sin redirección a otra aplicación. \\[4pt]
 
-  RNF-05 & Trazabilidad &
-    Log de auditoría de solo lectura (nunca UPDATE ni DELETE).
-    Registra usuario, acción y marca de tiempo para pagos, lecturas y radicados.
-    Conservado mínimo 5 años según normativa eléctrica colombiana. \\
+  RNF-05 & Trazabilidad y auditoría &
+    Registro de auditoría de solo lectura para todos los roles del sistema, sin posibilidad de modificación ni eliminación.
+    Cada evento relevante (pago, lectura, radicado) queda registrado con el identificador del usuario y la marca de tiempo.
+    Los registros se conservan mínimo cinco años según la normativa del sector eléctrico colombiano. \\
 \end{longtable}
 
-\subsection{Product Backlog (GitHub Issues)}
+\subsection{Product Backlog}
 
-El backlog completo está administrado como Issues en \url{https://github.com/Jenifrutica/analisisCedenar/issues}.
+El backlog completo del proyecto está administrado como Issues en el repositorio central de GitHub (\url{https://github.com/Jenifrutica/analisisCedenar/issues}).
 
 \begin{table}[H]
+  \caption{Product Backlog -- Historias de Usuario}
   \centering
-  \begin{tabular}{p{1cm} p{5.5cm} p{2cm} p{2.5cm} p{1.5cm}}
+  \begin{tabular}{p{1.2cm} p{5.5cm} p{2cm} p{2.8cm} p{1.5cm}}
     \toprule
     \textbf{Issue} & \textbf{Historia de Usuario} & \textbf{MoSCoW} & \textbf{Módulo} & \textbf{Estado} \\
     \midrule
     \#6 & HU-001: Registro de cuenta & Must & Autenticación & To Do \\
     \#5 & HU-002: Consulta y pago de factura & Must & Pagos & To Do \\
     \#4 & HU-003: Reporte de falla eléctrica & Must & Reportes & To Do \\
-    \#3 & HU-004: Historial de consumo & Should & Dashboard Cliente & To Do \\
+    \#3 & HU-004: Historial de consumo & Should & Dashboard cliente & To Do \\
     \#2 & HU-005: Registro de lectura del medidor & Must & Recaudador & To Do \\
-    \#1 & HU-006: Registro y seguimiento PQRS & Should & Atención al cliente & To Do \\
+    \#1 & HU-006: Registro y seguimiento de PQRS & Should & Atención al cliente & To Do \\
     \bottomrule
   \end{tabular}
-  \caption{Product Backlog}
 \end{table}
 
-\subsection{Historias de Usuario con Definition of Done}
+\subsection{Historias de Usuario Seleccionadas}
 
-\subsubsection{HU-005: Registro de lectura del medidor}
+Se presentan las tres historias de usuario más representativas del MVP, con su respectivo \textit{Definition of Done} y criterios de aceptación en notación Gherkin.
 
-\textbf{Como} Personal de Campo, \textbf{quiero} registrar lecturas en mi ruta, adjuntar foto y enviar recibo digital, \textbf{para} eliminar el papel y reducir errores de digitación.
+\subsubsection{HU-005: Registro de Lectura del Medidor}
 
-\begin{tcolorbox}[title=Definition of Done, colback=blue!5, colframe=cedenarblue,
-  fonttitle=\bfseries\small]
-\begin{itemize}\setlength\itemsep{2pt}
-  \item Lista de predios visible al iniciar sesión
-  \item Escaneo QR/barras identifica el medidor correcto en la ruta
-  \item Motor de Validación de Consumo invocado al guardar
-  \item Anomalía generada con estado \texttt{PENDIENTE} si hay inconsistencia
-  \item Modo offline con estado \textit{Pendiente de Sincronización}; cambia a \textit{Sincronizada} al recibir HTTP 200
-  \item Envío de recibo por WhatsApp y correo funcional
+\noindent\textit{Como} Personal de Campo, \textit{quiero} registrar la lectura del medidor de cada predio en mi ruta, adjuntar fotografía como evidencia y enviar el comprobante en formato digital, \textit{para} eliminar el uso de papel, reducir errores de digitación y agilizar la jornada de trabajo.
+
+\vspace{6pt}
+\noindent\textit{Definition of Done}
+
+\begin{itemize}
+  \item Lista de predios asignados visible al iniciar sesión
+  \item Escaneo de código QR o de barras identifica el medidor correcto dentro de la ruta
+  \item Motor de Validación de Consumo invocado al momento de guardar la lectura
+  \item Instancia \texttt{Anomalia} generada con estado \texttt{PENDIENTE} cuando se detecta inconsistencia
+  \item Modo \textit{offline} operativo; estado de la lectura actualizado a \textit{Sincronizada} al recibir respuesta HTTP 200 del servidor
+  \item Envío del comprobante por WhatsApp y correo electrónico funcional
 \end{itemize}
-\end{tcolorbox}
 
-\begin{lstlisting}[style=gherkin, caption={Criterios de Aceptación -- HU-005}]
+\vspace{6pt}
+\noindent\textit{Criterios de aceptación}
+
+\begin{lstlisting}[caption={HU-005 -- Criterios de Aceptación (Gherkin)}]
 Scenario: Identificacion del medidor por escaneo
-  Given el operario tiene su ruta cargada
+  Given el operario tiene su ruta del dia cargada
   When escanea el codigo QR del medidor
-  Then el sistema selecciona el contador correcto
-  And solicita digitar el valor en kWh del display
+  Then el sistema identifica y selecciona el contador correcto
+  And solicita digitar el valor en kWh observado en el display
 
-Scenario: Operacion sin conexion
-  Given el operario esta en zona sin datos
-  When registra lecturas durante su recorrido
-  Then el sistema guarda con estado Pendiente de Sincronizacion
-  And actualiza a Sincronizada cuando la API retorna HTTP 200
+Scenario: Operacion sin conexion a internet
+  Given el operario se encuentra en zona sin datos
+  When registra lecturas y fotografias durante su recorrido
+  Then el sistema guarda los datos con estado
+       Pendiente de Sincronizacion
+  And actualiza el estado a Sincronizada cuando
+       la API retorna HTTP 200
 
 Scenario: Alerta por lectura anomala
-  Given el operario ingresa el valor del medidor
-  When el Motor de Validacion detecta inconsistencia
-  Then genera Anomalia con estado PENDIENTE
-  And muestra alerta antes de confirmar el guardado
+  Given el operario ha ingresado el valor del medidor
+  When el Motor de Validacion de Consumo
+       detecta una inconsistencia
+  Then el sistema genera una instancia Anomalia
+       con estado PENDIENTE
+  And muestra una alerta al operario antes de
+       confirmar el guardado
 \end{lstlisting}
 
-\subsubsection{HU-003: Reporte de falla o daño eléctrico}
+\subsubsection{HU-003: Reporte de Falla o Daño Eléctrico}
 
-\textbf{Como} Cliente, \textbf{quiero} reportar un corte desde la app, \textbf{para} que el equipo técnico lo atienda y yo pueda hacer seguimiento con un radicado.
+\noindent\textit{Como} Cliente, \textit{quiero} reportar un corte de energía o daño en la infraestructura eléctrica desde la aplicación, \textit{para} que el equipo técnico de CEDENAR atienda la falla y yo pueda hacer seguimiento mediante un número de radicado.
 
-\begin{tcolorbox}[title=Definition of Done, colback=blue!5, colframe=cedenarblue,
-  fonttitle=\bfseries\small]
-\begin{itemize}\setlength\itemsep{2pt}
-  \item GPS capturado automáticamente; fallback a \texttt{codigoContrato} si no hay señal
+\vspace{6pt}
+\noindent\textit{Definition of Done}
+
+\begin{itemize}
+  \item Coordenadas GPS capturadas automáticamente; \textit{fallback} a \texttt{codigoContrato} cuando el permiso no está disponible
   \item Radicado único generado y almacenado en el módulo de mantenimiento
-  \item Reporte enrutado al despacho técnico por zona geográfica
-  \item Cliente notificado con número de radicado
-  \item Log de auditoría en cada cambio de estado del radicado
+  \item Reporte enrutado al despacho técnico según la zona geográfica detectada
+  \item Cliente notificado con el número de radicado asignado
+  \item Registro de auditoría generado en cada cambio de estado del radicado
 \end{itemize}
-\end{tcolorbox}
 
-\begin{lstlisting}[style=gherkin, caption={Criterios de Aceptación -- HU-003}]
+\vspace{6pt}
+\noindent\textit{Criterios de aceptación}
+
+\begin{lstlisting}[caption={HU-003 -- Criterios de Aceptación (Gherkin)}]
 Scenario: Reporte con GPS activo
-  Given el cliente accede a "Reportar falla" con GPS activo
+  Given el cliente accede al modulo Reportar falla
+       con GPS activo en el dispositivo
   When completa el formulario y lo envia
-  Then el sistema captura coordenadas automaticamente
-  And genera radicado unico, enruta al despacho y notifica al cliente
+  Then el sistema captura las coordenadas automaticamente
+  And genera radicado unico, enruta al despacho
+       y notifica al cliente
 
-Scenario: Reporte sin GPS
-  Given el cliente no tiene GPS o lo ha negado
+Scenario: Reporte sin GPS disponible
+  Given el cliente no tiene GPS activo o ha negado
+       el permiso de ubicacion
   When reporta la falla
-  Then el sistema usa el codigoContrato para determinar la zona
-  And genera el radicado y notifica igualmente
+  Then el sistema usa el codigoContrato para
+       determinar la zona de despacho tecnico
+  And genera el radicado y notifica al cliente
+       de la misma forma
 \end{lstlisting}
 
-\subsubsection{HU-006: Registro y seguimiento de PQRS}
+\subsubsection{HU-006: Registro y Seguimiento de PQRS}
 
-\textbf{Como} Cliente, \textbf{quiero} registrar una PQRS desde la app, \textbf{para} recibir respuesta formal sin ir a una oficina.
+\noindent\textit{Como} Cliente, \textit{quiero} registrar una petición, queja, reclamo o sugerencia directamente desde la aplicación, \textit{para} recibir respuesta formal sin necesidad de desplazarme a una oficina.
 
-\begin{tcolorbox}[title=Definition of Done, colback=blue!5, colframe=cedenarblue,
-  fonttitle=\bfseries\small]
-\begin{itemize}\setlength\itemsep{2pt}
-  \item Formulario disponible para cliente y Personal de Campo
-  \item Clasificación automática por tipo (Petición / Queja / Reclamo / Sugerencia)
-  \item Radicado y notificación por correo y WhatsApp al registrar
-  \item Panel administrativo con filtros por estado y tipo
-  \item Notificación automática al cliente al resolver el caso
+\vspace{6pt}
+\noindent\textit{Definition of Done}
+
+\begin{itemize}
+  \item Formulario de PQRS disponible para el cliente y para el Personal de Campo
+  \item Clasificación automática por tipo: Petición, Queja, Reclamo o Sugerencia
+  \item Número de radicado generado y notificación enviada por correo y WhatsApp al registrar
+  \item Panel administrativo con filtros por estado y por tipo de PQRS
+  \item Notificación automática al cliente cuando el caso queda marcado como resuelto
 \end{itemize}
-\end{tcolorbox}
 
-\begin{lstlisting}[style=gherkin, caption={Criterios de Aceptación -- HU-006}]
-Scenario: Cliente registra PQRS
-  Given el cliente ha iniciado sesion
-  When completa el formulario y hace clic en "Enviar"
-  Then el sistema genera radicado unico
-  And notifica por correo y WhatsApp con el numero de caso
+\vspace{6pt}
+\noindent\textit{Criterios de aceptación}
 
-Scenario: Resolucion del caso
-  Given la PQRS fue marcada como resuelta
-  When el sistema actualiza el estado
-  Then envia notificacion automatica por correo y WhatsApp
+\begin{lstlisting}[caption={HU-006 -- Criterios de Aceptación (Gherkin)}]
+Scenario: Cliente registra PQRS desde la aplicacion
+  Given el cliente ha iniciado sesion en el sistema
+  When completa el formulario y hace clic en Enviar
+  Then el sistema genera un numero de radicado unico
+  And notifica al cliente por correo y WhatsApp
+       con el numero de caso y el tiempo estimado
+       de respuesta
+
+Scenario: Notificacion de resolucion al cliente
+  Given la PQRS ha sido marcada como resuelta
+  When el sistema actualiza el estado del radicado
+  Then envia notificacion automatica por correo
+       y WhatsApp al cliente
 \end{lstlisting}
 
 % ============================================================
@@ -409,22 +417,16 @@ Scenario: Resolucion del caso
 \section{Arquitectura Empresarial (ArchiMate)}
 % ============================================================
 
-El diagrama ArchiMate organiza la solución en tres capas:
+\noindent El modelo de arquitectura empresarial organiza el ecosistema de la solución en tres capas bajo el estándar ArchiMate. La capa de negocio define los actores Operario de Campo y Administrador de Lecturas, con los procesos de asignación de rutas de inspección, toma física del consumo en el predio, validación de consistencia y auditoría de anomalías. La capa de aplicación aloja la Aplicación Móvil de Captura y el Dashboard Web de Administración, soportados por los servicios de Autenticación, Registro de Consumo, Motor de Validación Histórica y Alertas Automáticas. La capa de tecnología comprende los dispositivos móviles corporativos con soporte GPS, la red de comunicaciones con soporte para operación sin conexión, los servidores de aplicaciones en la nube y los motores de base de datos relacional.
 
-\begin{itemize}
-  \item \textbf{Capa de Negocio:} Operario de Campo y Administrador de Lecturas como actores. Procesos: asignación de rutas, toma de lecturas en campo, validación de consistencia y auditoría de anomalías/fraudes.
-  \item \textbf{Capa de Aplicación:} App Móvil de Captura y Dashboard Web. Servicios de Autenticación, Registro de Consumo, Motor de Validación Histórica y Alertas Automáticas.
-  \item \textbf{Capa de Tecnología:} Dispositivos móviles con GPS, red celular/datos con soporte offline, servidores cloud y base de datos relacional CEDENAR.
-\end{itemize}
-
-Cuando el Operario ejecuta la toma de lectura (Negocio), usa la App Móvil (Aplicación), que sincroniza los datos al Servidor Cloud via HTTPS/JSON (Tecnología). El Servidor Central CEDENAR se conecta por VPN dedicada con JDBC/SQL.
+Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negocio), este se apoya en la Aplicación Móvil (capa de aplicación), que almacena y procesa los datos en el Servidor Cloud mediante servicios HTTPS seguros (capa de tecnología). La comunicación con el Servidor Central de CEDENAR se realiza a través de un enlace dedicado VPN.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: archimate.png
   % Captura del diagrama de la sección 2 de la wiki del repositorio
   \includegraphics[width=0.9\textwidth]{archimate}
-  \caption{Diagrama de Arquitectura Empresarial -- ArchiMate}
+  \caption{\textit{Diagrama de Arquitectura Empresarial bajo el estándar ArchiMate.}}
 \end{figure}
 
 % ============================================================
@@ -434,50 +436,50 @@ Cuando el Operario ejecuta la toma de lectura (Negocio), usa la App Móvil (Apli
 
 \subsection{Diagrama de Clases}
 
-La clase abstracta \texttt{Persona} centraliza los atributos comunes de identidad. Heredan de ella \texttt{Supervisor}, \texttt{Cliente} y \texttt{RecaudadorInstalador}. Un \texttt{Cliente} tiene una o más instancias de \texttt{Contador}. Cada \texttt{Contador} compone un historial de \texttt{Lectura} con el atributo \texttt{esConsistente} y la enumeración \texttt{EstadoLectura}. Cuando \texttt{esConsistente = false}, se genera una \texttt{Anomalia} vinculada al \texttt{Supervisor} para evaluación con \texttt{evaluarAnomalia()}. El módulo comercial agrega \texttt{Factura} (desde una lectura válida), \texttt{Pago}, \texttt{PQRS} y \texttt{Radicado} (con coordenadas GPS).
+\noindent La clase abstracta \texttt{Persona} centraliza los atributos comunes de identidad. Heredan de ella mediante relaciones de generalización las clases \texttt{Supervisor}, \texttt{Cliente} y \texttt{RecaudadorInstalador}. Un \texttt{Cliente} posee una relación de agregación con uno o más \texttt{Contador}. Cada \texttt{Contador} compone de forma estricta un historial de objetos \texttt{Lectura}, que incluye el atributo \texttt{esConsistente} y la enumeración \texttt{EstadoLectura}. Cuando la condición \texttt{esConsistente = false} se evalúa como verdadera, el sistema genera una instancia de \texttt{Anomalia} vinculada al \texttt{Supervisor} para su evaluación mediante el método \texttt{evaluarAnomalia()}. El módulo comercial integra las clases \texttt{Factura} (generada a partir de una lectura válida), \texttt{Pago}, \texttt{PQRS} y \texttt{Radicado} con captura de coordenadas GPS.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_clases.png
   % URL de descarga: https://github.com/user-attachments/assets/9dd72c89-1f8e-4d6f-bdf6-d997c4b8bad3
   \includegraphics[width=0.95\textwidth]{diagrama_clases}
-  \caption{Diagrama de Clases -- Modelo de Dominio}
+  \caption{\textit{Diagrama de Clases -- Modelo de Dominio del sistema CEDENAR Rural.}}
 \end{figure}
 
 \subsection{Diagrama de Paquetes}
 
-Arquitectura DDD/Layered bajo el namespace \texttt{com.cedenar.rural}. Cuatro paquetes con dependencias unidireccionales: \texttt{controller} (API REST) accede a \texttt{service} (lógica, incluye \texttt{MotorValidacionService}), que accede a \texttt{repository} (DAO), que usa \texttt{domain} (entidades puras, sin dependencias externas). El paquete \texttt{domain} no depende de ningún otro.
+\noindent La estructura de código fuente adopta el patrón Domain-Driven Design / Layered Architecture bajo el espacio de nombres \texttt{com.cedenar.rural}. Cuatro paquetes con dependencias estrictamente unidireccionales: \texttt{controller} actúa como punto de entrada REST y accede a \texttt{service}, que contiene las implementaciones de lógica de negocio (incluyendo \texttt{MotorValidacionService}) y accede a \texttt{repository}, que gestiona la persistencia mediante el patrón DAO y usa \texttt{domain}. El paquete \texttt{domain} no tiene dependencias hacia ningún otro paquete y contiene exclusivamente las entidades puras del negocio.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_paquetes.png
   % URL de descarga: https://github.com/user-attachments/assets/b8dd4082-099d-4fb4-a904-57e9e43fc593
   \includegraphics[width=0.65\textwidth]{diagrama_paquetes}
-  \caption{Diagrama de Paquetes -- Estructura de Código Fuente (DDD/Layered)}
+  \caption{\textit{Diagrama de Paquetes -- Estructura de Código Fuente bajo patrón DDD/Layered.}}
 \end{figure}
 
 \subsection{Diagrama de Componentes}
 
-Arquitectura SOA con conectores Lollipop \& Socket. Los tres frontends (App Móvil Operario, Portal Web Supervisión, App/Portal Cliente) consumen APIs expuestas por el Backend y no acceden directamente a datos. El Motor de Validación y el Gestor de Radicados notifican al Servicio de Notificaciones de forma asíncrona. Los repositorios delegan la persistencia final al Servidor Central CEDENAR via JDBC/SQL.
+\noindent La arquitectura de software adopta el enfoque de Arquitectura Orientada a Servicios (SOA) con conectores Lollipop y Socket. Los tres frontends (Aplicación Móvil del Operario, Portal Web de Supervisión y Portal Web/App del Cliente) están desacoplados y consumen las interfaces provistas por el Backend sin acceso directo a las bases de datos. El Motor de Validación de Consumo y el Gestor de Radicados se comunican internamente con el Servicio de Notificaciones mediante flujos asíncronos. Los repositorios delegan la persistencia final al Servidor Central CEDENAR mediante JDBC/SQL.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_componentes.png
   % URL de descarga: https://github.com/user-attachments/assets/0e1f169e-0a6e-4b4a-8bd6-b031c3cebd90
   \includegraphics[width=0.88\textwidth]{diagrama_componentes}
-  \caption{Diagrama de Componentes -- Arquitectura de Software (SOA)}
+  \caption{\textit{Diagrama de Componentes -- Arquitectura de Software bajo patrón SOA.}}
 \end{figure}
 
 \subsection{Diagrama de Despliegue}
 
-Tres nodos de usuario: Dispositivo Móvil del Operario (HTTPS/JSON via red celular o satelital), PC Escritorio del Supervisor (WAN corporativa) y Dispositivo del Cliente (HTTPS público). El Servidor Cloud centraliza el middleware. La integración con el Servidor Central CEDENAR usa VPN dedicada y JDBC/SQL. La Pasarela PSE/PlaceToPay se consume como nodo externo via REST/TLS. El sistema no almacena tarjetas ni datos bancarios localmente.
+\noindent El diagrama mapea los artefactos de software sobre tres nodos de hardware: el Dispositivo Móvil del Operario transmite datos mediante red celular o satelital con protocolo HTTPS/JSON; el PC de Escritorio del Supervisor se conecta por WAN corporativa; y el Dispositivo del Cliente accede mediante HTTPS público. El Servidor Cloud centraliza el cómputo de \textit{backend}. La integración con el Servidor Central CEDENAR usa VPN dedicada y JDBC/SQL sobre la Base de Datos Comercial. La pasarela PSE/PlaceToPay se consume como nodo externo mediante REST API sobre TLS; el sistema no almacena datos bancarios localmente.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_despliegue.png
   % URL de descarga: https://github.com/user-attachments/assets/48694deb-a298-4e39-9936-36aafa0cb2bf
   \includegraphics[width=0.88\textwidth]{diagrama_despliegue}
-  \caption{Diagrama de Despliegue -- Infraestructura Física}
+  \caption{\textit{Diagrama de Despliegue -- Infraestructura Física del sistema.}}
 \end{figure}
 
 % ============================================================
@@ -492,59 +494,43 @@ Tres nodos de usuario: Dispositivo Móvil del Operario (HTTPS/JSON via red celul
   % IMAGEN: diagrama_casos_uso.png
   % URL de descarga: https://github.com/user-attachments/assets/7e1e6fcf-7122-4d94-9dd8-07acfbcde390
   \includegraphics[width=0.88\textwidth]{diagrama_casos_uso}
-  \caption{Diagrama de Casos de Uso}
+  \caption{\textit{Diagrama de Casos de Uso -- Interacciones entre actores y el sistema.}}
 \end{figure}
 
 \subsection{Diagrama de Actividades}
 
-Modela el flujo completo de captura de lecturas en campo. Los carriles separan responsabilidades entre el Operario, la App Móvil, el Backend y el Supervisor. El flujo contempla la ausencia de conexión: las lecturas se guardan como pendientes y se sincronizan al recuperar señal. Si la lectura es consistente pasa a válida y se sincroniza. Si no, se genera una alerta para el supervisor con estado \texttt{OBSERVADA}.
+\noindent El diagrama modela el flujo completo de captura de lecturas en campo mediante carriles que separan las responsabilidades entre el Operario, la Aplicación Móvil, el \textit{Backend} y el Supervisor. El flujo contempla explícitamente la ausencia de conexión: las lecturas se guardan localmente con estado pendiente y se sincronizan de forma autónoma al recuperar señal. Cuando la lectura es consistente, pasa a estado válido y se sincroniza con el servidor central. Cuando no lo es, queda en estado \textit{Observada} y se genera una alerta para revisión del Supervisor.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_actividades.png
   % URL de descarga: https://github.com/user-attachments/assets/f7cfb4fb-c9b0-46df-b0da-be4a388855bb
   \includegraphics[width=0.92\textwidth]{diagrama_actividades}
-  \caption{Diagrama de Actividades -- Flujo de Captura de Lecturas}
+  \caption{\textit{Diagrama de Actividades -- Flujo completo de captura de lecturas en campo.}}
 \end{figure}
 
 \subsection{Diagrama de Secuencia}
 
-La secuencia inicia cuando el Operario captura la lectura en la App. La app envía la solicitud al Backend. El Motor de Validación evalúa \texttt{esConsistente}: si es \texttt{true}, guarda la lectura como \texttt{VALIDADA}; si es \texttt{false}, el Gestor de Anomalías crea una instancia \texttt{Anomalia} con estado \texttt{PENDIENTE} y notifica al Portal del Supervisor.
+\noindent La secuencia modela la interacción cronológica durante la validación técnica de una lectura. El Operario captura la lectura en la Aplicación Móvil, que envía la solicitud al \textit{Backend}. El Motor de Validación evalúa el atributo \texttt{esConsistente}: cuando es verdadero, guarda la lectura como \texttt{VALIDADA}; cuando es falso, el Gestor de Anomalías crea una instancia \texttt{Anomalia} con estado \texttt{PENDIENTE} y notifica al Portal del Supervisor para su revisión.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_secuencia.png
   % URL de descarga: https://github.com/user-attachments/assets/ff85b2fe-8cf2-486a-bf67-e578c346c1db
   \includegraphics[width=0.95\textwidth]{diagrama_secuencia}
-  \caption{Diagrama de Secuencia -- Validación Técnica de una Lectura}
+  \caption{\textit{Diagrama de Secuencia -- Validación técnica de una lectura de medidor.}}
 \end{figure}
 
 \subsection{Diagrama de Máquina de Estados}
 
-Ciclo de vida completo de una \texttt{Lectura}:
-
-\[
-\texttt{Nueva} \rightarrow \texttt{En captura} \rightarrow \texttt{Capturada local}
-\]
-\[
-\rightarrow \begin{cases}
-  \texttt{Pendiente de sincronización} & \text{sin señal} \\
-  \texttt{En validación} & \text{con señal}
-\end{cases}
-\rightarrow \begin{cases}
-  \texttt{Validada} \rightarrow \texttt{Sincronizada} & \text{si consistente} \\
-  \texttt{Observada} & \text{si anomalía}
-\end{cases}
-\]
-
-Desde \texttt{Observada}, el Supervisor puede aprobar, rechazar u ordenar una recaptura.
+\noindent El diagrama representa el ciclo de vida completo de una \texttt{Lectura} dentro del sistema. La lectura inicia en estado \texttt{Nueva} y avanza a \texttt{En captura} cuando el operario comienza el registro. Una vez confirmados el valor y la fotografía, pasa a \texttt{Capturada local}. Sin conexión, transiciona a \texttt{Pendiente de sincronización}; con conexión, avanza directamente a \texttt{En validación}. Si la condición \texttt{esConsistente = true} se cumple, la lectura pasa a \texttt{Validada} y luego a \texttt{Sincronizada con CEDENAR}, completando su ciclo. Si \texttt{esConsistente = false}, la lectura queda en estado \texttt{Observada} y se genera una instancia \texttt{Anomalia} pendiente. Desde ese estado, el Supervisor puede aprobar, rechazar u ordenar una recaptura.
 
 \begin{figure}[H]
   \centering
   % IMAGEN: maquina_estados.png
   % URL de descarga: https://github.com/user-attachments/assets/20c73dec-7b2b-4ff1-ab85-aa8405799c60
   \includegraphics[width=0.95\textwidth]{maquina_estados}
-  \caption{Diagrama de Máquina de Estados -- Ciclo de Vida de una Lectura}
+  \caption{\textit{Diagrama de Máquina de Estados -- Ciclo de vida de una Lectura.}}
 \end{figure}
 
 % ============================================================
@@ -556,105 +542,137 @@ Desde \texttt{Observada}, el Supervisor puede aprobar, rechazar u ordenar una re
 
 \subsubsection{Fase 1: Empatizar}
 
-Nicolas Diaz (integrante del equipo) acompañó al recaudador Iván Diaz durante una jornada completa en Linares, Nariño. Varios integrantes son clientes activos de CEDENAR y documentaron sus experiencias propias con facturas atípicas y la ausencia de canal formal para reportar cortes.
+\noindent El equipo aplicó dos métodos de investigación. El primero fue el acompañamiento en ruta: Nicolas Diaz (integrante del equipo) acompañó al recaudador Iván Diaz durante una jornada completa de lecturas en Linares, Nariño, observando el proceso paso a paso desde la espera inicial de la terminal hasta las interrupciones por señal. El segundo fue la autoetnografía: varios integrantes del equipo son clientes activos de CEDENAR y documentaron sus propias experiencias con facturas de consumo atípico y la imposibilidad de reportar cortes por un canal oficial. Los hallazgos se triangularon con quejas en redes sociales y notas de prensa local de Nariño.
 
-\paragraph{Personas}
+\vspace{6pt}
+\noindent A partir de la investigación se construyeron dos perfiles de usuario (Tabla \ref{tab:personas}).
 
 \begin{table}[H]
+  \caption{Personas -- Perfiles de Usuario}
+  \label{tab:personas}
   \centering
-  \small
   \begin{tabular}{p{3cm} p{5.8cm} p{5.8cm}}
     \toprule
     \textbf{Atributo} & \textbf{Iván Diaz (Operario)} & \textbf{Doña Marta (Cliente)} \\
     \midrule
-    Rol & Recaudador instalador, Linares & Clienta residencial, casco urbano \\
-    Experiencia & 17 años en CEDENAR & Clienta desde hace más de una década \\
-    Herramienta & Terminal portátil + impresora manual & Teléfono, paga en banco \\
-    Meta & Cerrar el sector en el menor número de jornadas & Pagar lo justo y tener canal para reportar problemas \\
-    Frustración principal & Un refresco de pantalla le borra 15 minutos de trabajo & No tiene a dónde llamar cuando la factura llega alta \\
+    Rol & Recaudador instalador, cubre casco urbano y veredas de Linares & Clienta residencial del casco urbano de Linares \\
+    Experiencia & 17 años como recaudador en CEDENAR & Clienta desde hace más de una década \\
+    Herramienta principal & Terminal portátil más impresora manual & Teléfono, paga en banco \\
+    Meta & Cerrar el sector completo en el menor número de jornadas & Pagar lo que es justo y reportar problemas cuando ocurren \\
+    Frustración central & Un refresco accidental de pantalla le borra 15 minutos de trabajo & No tiene canal al cual llamar cuando la factura llega más alta de lo esperado \\
     \bottomrule
   \end{tabular}
-  \caption{Personas -- Perfiles de Usuario}
 \end{table}
 
-\paragraph{Hallazgos}
+\vspace{6pt}
+\noindent Los hallazgos consolidados se presentan en la Tabla \ref{tab:hallazgos}.
 
 \begin{table}[H]
+  \caption{Hallazgos Principales -- Fase Empatizar}
+  \label{tab:hallazgos}
   \centering
   \small
-  \begin{tabular}{p{1.2cm} p{7.5cm} p{2.5cm} p{2.2cm}}
+  \begin{tabular}{p{1.2cm} p{7.8cm} p{2.5cm} p{2.2cm}}
     \toprule
     \textbf{ID} & \textbf{Hallazgo} & \textbf{Persona} & \textbf{Trazab.} \\
     \midrule
-    HG-01 & Terminal se congela hasta 15 min por caída de señal & Iván & RF-05, RNF-04 \\
-    HG-02 & Sin señal: llena formato a mano o exporta ZIP & Iván & RF-05 \\
-    HG-03 & Sectores incompletos obligan a volver al día siguiente & Iván & RF-05 \\
-    HG-04 & Cargar impresora todo el día retrasa la ruta & Iván & RF-05 \\
-    HG-05 & Recibos en puertas cerradas se pierden sin constancia & Ambos & RF-05 \\
-    HG-06 & Para aclarar factura el cliente va a la casa del recaudador & Marta & RF-03, RF-04 \\
-    HG-07 & Cortes reportados por WhatsApp sin radicado ni trazabilidad & Marta & RF-03 \\
-    HG-08 & El cliente no recibe comprobante digital de la lectura & Ambos & RF-02, RF-05 \\
+    HG-01 & La terminal se congela hasta 15 minutos cuando cae la señal o se refresca la pantalla por accidente & Iván Diaz & RF-05, RNF-04 \\
+    HG-02 & Cuando la terminal no envía, el operario llena un formato a mano o exporta un ZIP & Iván Diaz & RF-05 \\
+    HG-03 & Los sectores incompletos obligan a regresar al mismo sector al día siguiente & Iván Diaz & RF-05 \\
+    HG-04 & Cargar la impresora manual todo el día suma peso y retrasa el recorrido & Iván Diaz & RF-05 \\
+    HG-05 & Los recibos dejados en puertas de predios cerrados se pierden sin que el cliente tenga constancia & Ambos & RF-05 \\
+    HG-06 & Para aclarar una factura alta el cliente debe ir en persona a la casa del recaudador instalador & Doña Marta & RF-03, RF-04 \\
+    HG-07 & Los cortes se reportan por WhatsApp personal al técnico, sin radicado ni trazabilidad & Doña Marta & RF-03 \\
+    HG-08 & El cliente no recibe comprobante digital de la lectura tomada & Ambos & RF-02, RF-05 \\
     \bottomrule
   \end{tabular}
-  \caption{Hallazgos -- Fase Empatizar}
 \end{table}
 
 \subsubsection{Fase 2: Definir}
 
-Tres grupos de problemas al cruzar los hallazgos: (1) resiliencia en campo (HG-01, 02, 03), (2) equipo del operario (HG-04, 05) y (3) canal formal para el cliente (HG-06, 07, 08).
+\noindent Al cruzar los hallazgos emergen tres grupos de problemas. El primero, resiliencia en campo (HG-01, HG-02, HG-03), tiene su origen en que la terminal no puede trabajar si no hay señal y cualquier interrupción borra el progreso. La solución debe funcionar aunque la conexión caiga. El segundo, equipo del operario (HG-04, HG-05), muestra que la impresora manual genera fricciones físicas y riesgos reales de pérdida de comprobantes. El tercero, canal formal para el cliente (HG-06, HG-07, HG-08), son variantes del mismo problema: el cliente no tiene adónde acudir cuando algo falla.
 
-\begin{tcolorbox}[title=Declaración del Problema (POV), colback=blue!4, colframe=cedenarblue]
-Iván Diaz lleva 17 años tomando lecturas en Linares y depende de que haya señal en el momento exacto para no perder media jornada. Necesita una herramienta que guarde el progreso localmente y lo sincronice sola cuando vuelva la conexión.
+\vspace{6pt}
+\noindent La declaración del problema (POV) resultante es la siguiente:
 
-Doña Marta no tiene canal formal para aclarar su factura ni reportar un corte. Cuando algo falla, tiene que ir físicamente a la casa del recaudador. Necesita un canal que le dé un radicado y le diga en qué estado está su caso.
-\end{tcolorbox}
+\begin{quote}
+Iván Diaz lleva 17 años tomando lecturas en Linares y todavía depende de que haya señal en el momento exacto para no perder el trabajo de media jornada. Necesita una herramienta que guarde el progreso localmente y lo sincronice de forma autónoma cuando vuelva la conexión, sin que un refresco accidental lo obligue a empezar de nuevo.
+
+Doña Marta no tiene canal formal para aclarar su factura ni para reportar un corte de luz. Cuando algo falla, tiene que ir físicamente a la casa del recaudador. Necesita un canal que le genere un número de radicado y le informe el estado de su caso.
+\end{quote}
+
+\vspace{6pt}
+\noindent Las preguntas \textit{How Might We} (HMW) derivadas se presentan en la Tabla \ref{tab:hmw}.
+
+\begin{table}[H]
+  \caption{Preguntas How Might We -- Fase Definir}
+  \label{tab:hmw}
+  \centering
+  \small
+  \begin{tabular}{p{1.2cm} p{9.8cm} p{2.5cm}}
+    \toprule
+    \textbf{ID} & \textbf{Pregunta} & \textbf{Hallazgo} \\
+    \midrule
+    HMW-01 & ¿Cómo logramos que la aplicación siga funcionando aunque no haya señal y no pierda el progreso si la pantalla se refresca? & HG-01 \\
+    HMW-02 & ¿Cómo automatizamos el reenvío de lecturas para que el operario no tenga que llenar ningún formato a mano ni exportar archivos ZIP? & HG-02 \\
+    HMW-03 & ¿Cómo reemplazamos la impresora manual y aún así entregamos un comprobante válido en el momento de la visita? & HG-04, HG-05, HG-08 \\
+    HMW-04 & ¿Cómo logramos cerrar el sector completo en una sola jornada aunque la conexión sea inestable? & HG-03 \\
+    HMW-05 & ¿Cómo le damos al cliente un canal formal para aclarar su factura sin que tenga que ir a la casa del recaudador? & HG-06 \\
+    HMW-06 & ¿Cómo formalizamos el reporte de fallas para que el cliente reciba un radicado y pueda hacerle seguimiento? & HG-07 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsubsection{Fase 3: Idear}
 
-El equipo usó Brainwriting silencioso: cinco personas, seis ideas cada una, seis minutos por pregunta HMW. Las ideas se agruparon por afinidad.
-
-\paragraph{Priorización MoSCoW}
+\noindent El equipo aplicó la técnica de Brainwriting silencioso: cinco personas, seis ideas cada una, seis minutos por pregunta HMW, sin discusión durante la escritura. Las ideas se agruparon por afinidad y se priorizaron con el método MoSCoW (Tabla \ref{tab:moscow}).
 
 \begin{table}[H]
+  \caption{Priorización MoSCoW -- Fase Idear}
+  \label{tab:moscow}
   \centering
-  \small
-  \begin{tabular}{p{2cm} p{11.5cm}}
+  \begin{tabular}{p{2cm} p{12cm}}
     \toprule
-    \textbf{Categoría} & \textbf{Funcionalidades} \\
+    \textbf{Categoría} & \textbf{Funcionalidades priorizadas} \\
     \midrule
-    Must & App offline-first, cola de reintentos automáticos, captura con foto, semáforo de validación, recibo digital (elimina impresora), formulario PQRS con radicado, reporte de fallas con radicado, autenticación segura \\[4pt]
-    Should & ZIP de respaldo, historial de consumo con gráfica, dashboard de anomalías, seguimiento de radicado, pago en línea, optimización de ruta \\[4pt]
-    Could & Alertas push de consumo, notificación automática al cliente al tomar la lectura \\[4pt]
-    Won't & Medidores inteligentes con lectura remota, chatbot de atención \\
+    Must & Arquitectura \textit{offline-first} con persistencia de jornada, cola de reintentos automáticos, captura con fotografía, semáforo de validación, comprobante digital (elimina impresora), formulario de aclaración de factura con radicado, reporte de fallas con radicado, autenticación segura \\[4pt]
+    Should & Exportación ZIP como respaldo de contingencia, historial de consumo con gráfica comparativa, panel de anomalías, seguimiento de radicado, pago en línea, optimización de ruta por geolocalización \\[4pt]
+    Could & Alertas \textit{push} de consumo elevado, notificación automática al cliente al momento de la lectura \\[4pt]
+    Won't & Medidores inteligentes con lectura remota, chatbot de atención al cliente \\
     \bottomrule
   \end{tabular}
-  \caption{Priorización MoSCoW -- Idear}
 \end{table}
+
+\noindent Esta priorización coincide con la columna MoSCoW del backlog de la Sección 1.4, lo que confirma que Design Thinking y el levantamiento de requerimientos llegaron al mismo resultado por caminos independientes.
 
 \paragraph{Benchmarking}
+Se revisaron cuatro soluciones existentes para verificar que los problemas identificados no tienen respuesta adecuada en el mercado actual, en particular para el contexto de conectividad rural de Nariño (Tabla \ref{tab:benchmarking}).
 
 \begin{table}[H]
+  \caption{Benchmarking -- Comparación con Soluciones Existentes}
+  \label{tab:benchmarking}
   \centering
   \scriptsize
-  \begin{tabularx}{\textwidth}{p{2.6cm} p{1.8cm} X X X X p{1.3cm}}
+  \begin{tabularx}{\textwidth}{p{2.8cm} p{2cm} X X X X p{1.4cm}}
     \toprule
-    \textbf{Solución} & \textbf{Tipo} & \textbf{Offline} & \textbf{Valid.} & \textbf{Recibo} & \textbf{Canal cliente} & \textbf{Rural} \\
+    \textbf{Solución} & \textbf{Tipo} & \textbf{Offline} & \textbf{Valid.} & \textbf{Recibo campo} & \textbf{Canal cliente} & \textbf{Rural} \\
     \midrule
     Itron Mobile (EE.UU.) & App operario & Parcial & Sí & No & No & No \\
-    osapiens HUB (Europa) & CMMS+app & Sí, auto-sync & Sí & No & No & No \\
+    osapiens HUB (Europa) & CMMS y app & Sí, auto-sync & Sí & No & No & No \\
     App EPM (Colombia) & App cliente & N/A & N/A & Factura mensual & Sí & No \\
-    Honeywell FieldSense & App operario & No documentado & No espec. & No & No & No \\
-    \textbf{Propuesta CEDENAR} & \textbf{App operario} & \textbf{Sí, nativo} & \textbf{Semáforo} & \textbf{WhatsApp/correo} & Iter. 2 & \textbf{Sí} \\
+    Honeywell FieldSense & App operario & No documentado & No especif. & No & No & No \\
+    \textbf{Propuesta CEDENAR} & \textbf{App operario} & \textbf{Sí, nativo} & \textbf{Semáforo visual} & \textbf{WhatsApp o correo} & Iteración 2 & \textbf{Sí} \\
     \bottomrule
   \end{tabularx}
-  \caption{Benchmarking -- Soluciones existentes vs. propuesta}
 \end{table}
 
-La brecha que ninguna solución cubre: ninguna combina operación offline-first con recibo digital al cliente en el momento de la lectura, diseñado para conectividad rural intermitente en municipios colombianos.
+\noindent Ninguna solución existente combina funcionamiento \textit{offline-first} nativo con generación de comprobante digital al cliente en el momento de la lectura, diseñado para conectividad rural intermitente en municipios colombianos.
 
 \subsubsection{Fase 4: Prototipar}
 
-Se diseñó en Figma con alta fidelidad la app móvil del operario (MVP de primera iteración). El portal web del cliente y el dashboard de supervisión quedan para la segunda iteración.
+\noindent Se diseñó el prototipo en Figma con alta fidelidad. La decisión de usar alta fidelidad se justifica en que las funcionalidades más críticas (comportamiento \textit{offline}, indicador de cola de sincronización, semáforo de anomalía, flujo del formulario de aclaración de factura) requieren ver el flujo completo para evaluar si funcionan correctamente.
+
+\noindent El prototipo cubre la aplicación móvil del operario, que constituye el MVP de la primera iteración. El portal web del cliente y el panel de supervisión están especificados en los requerimientos y los modelos de las secciones anteriores, y quedan como segunda iteración.
 
 \begin{itemize}
   \item Prototipo interactivo: \url{https://www.figma.com/proto/evDOdF75swECN4ijDjgQ6N/CEDENAR_?node-id=0-1&t=CcAxX2niYOhNCSoK-1}
@@ -667,37 +685,37 @@ Se diseñó en Figma con alta fidelidad la app móvil del operario (MVP de prime
   % Archivo local: diagramas/vista mobile.png
   % Renombrar a vista_mobile.png y subir a Overleaf
   \includegraphics[width=0.95\textwidth]{vista_mobile}
-  \caption{Prototipo App Móvil -- Vistas principales (Figma, alta fidelidad)}
+  \caption{\textit{Prototipo de la Aplicación Móvil del Operario -- Vistas principales (Figma, alta fidelidad).}}
 \end{figure}
 
 \subsubsection{Fase 5: Testear}
 
-\paragraph{Matriz de validación HU vs. Prototipo}
+\noindent La validación del prototipo combina dos técnicas. La primera es la trazabilidad funcional: verificar que cada historia de usuario tenga al menos una pantalla del prototipo que la satisfaga. La segunda es la evaluación heurística de Nielsen aplicada sobre las pantallas del prototipo. Los resultados de un piloto real con usuarios de CEDENAR quedan formulados como hipótesis medibles para la siguiente iteración.
 
 \begin{table}[H]
+  \caption{Matriz de Validación -- Historias de Usuario vs. Prototipo}
   \centering
-  \begin{tabular}{p{1.4cm} p{6.5cm} p{2.5cm} p{2.5cm}}
+  \begin{tabular}{p{1.3cm} p{6.5cm} p{2.5cm} p{2.5cm}}
     \toprule
     \textbf{HU} & \textbf{Pantalla que la satisface} & \textbf{Estado} & \textbf{Nota} \\
     \midrule
     HU-01 & Registro y login (app móvil) & Cumple & MVP \\
     HU-02 & Portal cliente: factura y pago & Pendiente & Iteración 2 \\
     HU-03 & Portal cliente: formulario y radicado & Pendiente & Iteración 2 \\
-    HU-04 & Portal cliente: gráfica 6 meses & Pendiente & Iteración 2 \\
-    HU-05 & App móvil: QR + foto + semáforo & Cumple & MVP \\
-    HU-06 & Portal cliente: PQRS + radicado & Pendiente & Iteración 2 \\
+    HU-04 & Portal cliente: gráfica de consumo & Pendiente & Iteración 2 \\
+    HU-05 & App móvil: QR, fotografía y semáforo & Cumple & MVP \\
+    HU-06 & Portal cliente: PQRS y radicado & Pendiente & Iteración 2 \\
     \bottomrule
   \end{tabular}
-  \caption{Validación del Prototipo contra las Historias de Usuario}
 \end{table}
 
-\paragraph{Hipótesis para piloto real}
+\noindent Las hipótesis formuladas para el piloto real son las siguientes:
 
 \begin{itemize}
-  \item Si la app es offline-first, los tiempos muertos por caídas de señal caerán de $\approx$15 minutos por incidente a menos de 30 segundos.
-  \item Si la cola sincroniza sola, el operario dejará de llenar formatos a mano en al menos el 90\% de las jornadas y cerrará el sector completo en un solo día.
-  \item Si el recibo va digital, la impresora deja de ser necesaria y los reclamos por recibos no entregados desaparecen.
-  \item Si el cliente puede reportar fallas con radicado, el tiempo de respuesta del despacho técnico cae al menos un 25\% frente al canal informal actual.
+  \item Si la aplicación opera con arquitectura \textit{offline-first}, los tiempos muertos por caídas de señal o refrescos accidentales caerán de aproximadamente 15 minutos por incidente a menos de 30 segundos.
+  \item Si la cola de sincronización opera de forma autónoma, el operario dejará de llenar formatos a mano o exportar archivos ZIP en al menos el 90\% de las jornadas, y cerrará el sector completo en un solo día.
+  \item Si el comprobante se envía de forma digital, la impresora manual deja de ser necesaria y los reclamos por comprobantes no entregados desaparecen.
+  \item Si el cliente puede reportar fallas con radicado, el tiempo medio de respuesta del despacho técnico cae al menos un 25\% frente al canal informal actual.
 \end{itemize}
 
 % ============================================================
@@ -705,19 +723,18 @@ Se diseñó en Figma con alta fidelidad la app móvil del operario (MVP de prime
 \subsection{Lógica de Negocio en Código (Kotlin)}
 % ============================================================
 
-Se eligió Kotlin porque el prototipo es una app Android y Kotlin es el lenguaje oficial de Android desde 2017. El código se lee casi como pseudocódigo (\texttt{data class}, \texttt{when}, \texttt{copy}) pero es real y directamente portable. Cada función está trazada a una pantalla del prototipo y a un requerimiento del backlog.
+\noindent Se eligió Kotlin porque el prototipo es una aplicación Android y Kotlin es el lenguaje oficial de Android desde 2017, reemplazando a Java en proyectos nuevos. La sintaxis de Kotlin (\texttt{data class}, \texttt{when}, \texttt{copy}) expresa la lógica de negocio sin ruido sintáctico, lo que facilita la lectura en contexto académico y hace que el código sea directamente portable a un desarrollo real sin traducción. Las tres funciones presentadas a continuación están trazadas cada una a una pantalla específica del prototipo y a un requerimiento del backlog.
 
-El repositorio completo: \url{https://github.com/Jenifrutica/analisisCedenar}
+El repositorio completo con el código fuente está disponible en: \url{https://github.com/Jenifrutica/analisisCedenar}
 
-\subsubsection{Función 1: Validación con semáforo}
+\subsubsection{Función 1: Validación con Semáforo Visual}
 
-Pantalla de origen: captura de lectura con indicador verde/amarillo/rojo.
-Trazabilidad: RF-05, HU-005, \texttt{MotorValidacionService} (sección 3.2 de la wiki).
+\noindent Pantalla de origen en el prototipo: pantalla de captura de lectura con indicador verde, amarillo o rojo. Trazabilidad: RF-05, HU-005, \texttt{MotorValidacionService} (Sección 3.2).
 
-\begin{lstlisting}[language=Kotlin, caption={LecturaService.kt -- validarLectura()}]
+\begin{lstlisting}[caption={LecturaService.kt -- Función validarLectura()}]
 // Compara la lectura nueva contra el historico del medidor.
 // Desviacion > 50%: ROJO (anomalia grave).
-// Desviacion 20-50%: AMARILLO (revisar antes de confirmar).
+// Desviacion entre 20% y 50%: AMARILLO (revisar antes de confirmar).
 fun validarLectura(nueva: Int, historico: List<Int>): Semaforo {
     if (historico.isEmpty()) return Semaforo.VERDE
     val promedio = historico.average()
@@ -730,13 +747,12 @@ fun validarLectura(nueva: Int, historico: List<Int>): Semaforo {
 }
 \end{lstlisting}
 
-\subsubsection{Función 2: Guardado offline con cola de reintentos}
+\subsubsection{Función 2: Guardado Offline con Cola de Reintentos}
 
-Pantalla de origen: ``Lectura guardada localmente'' (fondo verde).
-Trazabilidad: RF-05, RNF-04, HU-005 criterio ``Operación sin conexión''.
+\noindent Pantalla de origen en el prototipo: pantalla ``Lectura guardada localmente'' con fondo verde, que aparece cuando el estado de la lectura es \texttt{PENDIENTE\_SYNC}. Trazabilidad: RF-05, RNF-04, HU-005 criterio ``Operación sin conexión a internet''.
 
-\begin{lstlisting}[language=Kotlin, caption={LecturaService.kt -- registrarLectura() y sincronizarPendientes()}]
-// Siempre persiste local primero. Nunca se pierde el dato.
+\begin{lstlisting}[caption={LecturaService.kt -- Funciones registrarLectura() y sincronizarPendientes()}]
+// Siempre persiste local primero. El dato nunca se pierde.
 // Si hay senal, sincroniza de inmediato.
 // Si no, WorkManager reintenta en segundo plano al recuperarla.
 fun registrarLectura(lectura: Lectura, hayConexion: Boolean): EstadoLectura {
@@ -746,40 +762,45 @@ fun registrarLectura(lectura: Lectura, hayConexion: Boolean): EstadoLectura {
         sincronizarPendientes()
         EstadoLectura.SINCRONIZADA
     } else {
-        // El estado PENDIENTE_SYNC dispara la pantalla verde del prototipo
+        // PENDIENTE_SYNC es el estado que dispara la pantalla
+        // "Lectura guardada localmente" visible en el prototipo
         EstadoLectura.PENDIENTE_SYNC
     }
 }
 
-// Marca como SINCRONIZADA solo al recibir HTTP 200 (DoD HU-005)
+// Marca como SINCRONIZADA solo al recibir HTTP 200
+// Origen: DoD de HU-005
 fun sincronizarPendientes() {
     db.obtenerNoSincronizadas().forEach { lectura ->
         val exitoso = api.enviarLectura(lectura)
         if (exitoso) {
             db.marcarSincronizada(lectura.id)
-            auditLog.registrar("LECTURA_SINCRONIZADA", lectura.recaudadorId, lectura.id)
+            auditLog.registrar(
+                "LECTURA_SINCRONIZADA", lectura.recaudadorId, lectura.id
+            )
         }
     }
 }
 \end{lstlisting}
 
-\subsubsection{Función 3: Generación de radicado y reporte de falla}
+\subsubsection{Función 3: Generación de Radicado y Reporte de Falla}
 
-Pantalla de origen: ``PQRS Registrado con Éxito'' -- el número \texttt{\#71906-3163-1682} visible en el prototipo define el formato.
-Trazabilidad: RF-03, HU-003, HU-006, clase \texttt{Radicado} (sección 3.1 de la wiki).
+\noindent Pantalla de origen en el prototipo: pantalla ``PQRS Registrado con Éxito'', donde el número \texttt{\#71906-3163-1682} visible define el formato del radicado. La función \texttt{reportarFalla()} implementa el \textit{fallback} GPS documentado en HU-003. Trazabilidad: RF-03, HU-003, HU-006, clase \texttt{Radicado} (Sección 3.1).
 
-\begin{lstlisting}[language=Kotlin, caption={RadicadoService.kt -- generarRadicado() y reportarFalla()}]
-// Formato visible en la pantalla "PQRS Registrado con Exito": #71906-3163-1682
+\begin{lstlisting}[caption={RadicadoService.kt -- Funciones generarRadicado() y reportarFalla()}]
+// Formato visible en la pantalla del prototipo: #71906-3163-1682
 fun generarRadicado(tipo: String, zona: String, clienteId: String): Radicado {
     val numero = "#${(10000..99999).random()}-" +
                  "${(1000..9999).random()}-" +
                  "${(1000..9999).random()}"
     auditLog.registrar("RADICADO_CREADO", clienteId, numero)
-    notificaciones.notificarCliente(clienteId, "Tu caso fue registrado: $numero")
+    notificaciones.notificarCliente(
+        clienteId, "Su caso fue registrado. Radicado: $numero"
+    )
     return Radicado(numero = numero, tipo = tipo, zona = zona)
 }
 
-// Si el dispositivo no tiene GPS o el usuario lo nego,
+// Si el dispositivo no tiene GPS o el usuario nego el permiso,
 // la zona se determina desde el codigoContrato del cliente.
 // Origen: HU-003 criterio "Reporte sin acceso a GPS"
 fun reportarFalla(
@@ -799,14 +820,25 @@ fun reportarFalla(
 
 % ============================================================
 \newpage
-\section*{Recursos del Proyecto}
+\section*{Referencias}
 % ============================================================
+\addcontentsline{toc}{section}{Referencias}
 
-\begin{itemize}
-  \item \textbf{Repositorio (código + issues):} \url{https://github.com/Jenifrutica/analisisCedenar}
-  \item \textbf{Wiki de documentación técnica:} \url{https://github.com/Jenifrutica/analisisCedenar/wiki}
-  \item \textbf{Prototipo interactivo (Figma):} \url{https://www.figma.com/proto/evDOdF75swECN4ijDjgQ6N/CEDENAR_?node-id=0-1&t=CcAxX2niYOhNCSoK-1}
-  \item \textbf{Archivo de diseño (Figma):} \url{https://www.figma.com/design/evDOdF75swECN4ijDjgQ6N/CEDENAR_?node-id=0-1&t=CcAxX2niYOhNCSoK-1}
-\end{itemize}
+\noindent Repositorio del proyecto. (2026). \textit{Sistema de automatización de lecturas CEDENAR}. GitHub. \url{https://github.com/Jenifrutica/analisisCedenar}
+
+\vspace{6pt}
+\noindent Repositorio del proyecto. (2026). \textit{Wiki de documentación técnica}. GitHub. \url{https://github.com/Jenifrutica/analisisCedenar/wiki}
+
+\vspace{6pt}
+\noindent Equipo de diseño. (2026). \textit{CEDENAR\_ -- Prototipo interactivo de alta fidelidad}. Figma. \url{https://www.figma.com/proto/evDOdF75swECN4ijDjgQ6N/CEDENAR_?node-id=0-1&t=CcAxX2niYOhNCSoK-1}
+
+\vspace{6pt}
+\noindent Object Management Group. (2017). \textit{Unified Modeling Language specification version 2.5.1}. \url{https://www.omg.org/spec/UML/2.5.1}
+
+\vspace{6pt}
+\noindent The Open Group. (2019). \textit{ArchiMate 3.1 specification}. \url{https://pubs.opengroup.org/architecture/archimate3-doc/}
+
+\vspace{6pt}
+\noindent Nielsen, J. (1994). \textit{Usability engineering}. Academic Press.
 
 \end{document}
