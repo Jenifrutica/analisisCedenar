@@ -316,30 +316,11 @@ Se presentan las tres historias de usuario más representativas del MVP, con su 
 \vspace{6pt}
 \noindent\textit{Criterios de aceptación}
 
-\begin{lstlisting}[caption={HU-005 -- Criterios de Aceptación (Gherkin)}]
-Scenario: Identificacion del medidor por escaneo
-  Given el operario tiene su ruta del dia cargada
-  When escanea el codigo QR del medidor
-  Then el sistema identifica y selecciona el contador correcto
-  And solicita digitar el valor en kWh observado en el display
-
-Scenario: Operacion sin conexion a internet
-  Given el operario se encuentra en zona sin datos
-  When registra lecturas y fotografias durante su recorrido
-  Then el sistema guarda los datos con estado
-       Pendiente de Sincronizacion
-  And actualiza el estado a Sincronizada cuando
-       la API retorna HTTP 200
-
-Scenario: Alerta por lectura anomala
-  Given el operario ha ingresado el valor del medidor
-  When el Motor de Validacion de Consumo
-       detecta una inconsistencia
-  Then el sistema genera una instancia Anomalia
-       con estado PENDIENTE
-  And muestra una alerta al operario antes de
-       confirmar el guardado
-\end{lstlisting}
+\begin{enumerate}
+  \item \textbf{Identificación del medidor por escaneo:} dado que el operario tiene su ruta del día cargada, cuando escanea el código QR del medidor, el sistema identifica el contador correcto y solicita digitar el valor en kWh observado en el display.
+  \item \textbf{Operación sin conexión a internet:} dado que el operario se encuentra en zona sin datos, cuando registra lecturas y fotografías durante su recorrido, el sistema guarda los datos con estado \textit{Pendiente de Sincronización} y actualiza ese estado a \textit{Sincronizada} cuando la API retorna HTTP~200.
+  \item \textbf{Alerta por lectura anómala:} dado que el operario ha ingresado el valor del medidor, cuando el Motor de Validación de Consumo detecta una inconsistencia, el sistema genera una instancia \texttt{Anomalia} con estado \texttt{PENDIENTE} y muestra una alerta antes de confirmar el guardado.
+\end{enumerate}
 
 \subsubsection{HU-003: Reporte de Falla o Daño Eléctrico}
 
@@ -359,24 +340,10 @@ Scenario: Alerta por lectura anomala
 \vspace{6pt}
 \noindent\textit{Criterios de aceptación}
 
-\begin{lstlisting}[caption={HU-003 -- Criterios de Aceptación (Gherkin)}]
-Scenario: Reporte con GPS activo
-  Given el cliente accede al modulo Reportar falla
-       con GPS activo en el dispositivo
-  When completa el formulario y lo envia
-  Then el sistema captura las coordenadas automaticamente
-  And genera radicado unico, enruta al despacho
-       y notifica al cliente
-
-Scenario: Reporte sin GPS disponible
-  Given el cliente no tiene GPS activo o ha negado
-       el permiso de ubicacion
-  When reporta la falla
-  Then el sistema usa el codigoContrato para
-       determinar la zona de despacho tecnico
-  And genera el radicado y notifica al cliente
-       de la misma forma
-\end{lstlisting}
+\begin{enumerate}
+  \item \textbf{Reporte con GPS activo:} dado que el cliente accede al módulo ``Reportar falla'' con GPS activo en el dispositivo, cuando completa el formulario y lo envía, el sistema captura las coordenadas automáticamente, genera un radicado único, enruta el caso al despacho técnico correspondiente y notifica al cliente.
+  \item \textbf{Reporte sin GPS disponible:} dado que el cliente no tiene GPS activo o ha negado el permiso de ubicación, cuando reporta la falla, el sistema usa el \texttt{codigoContrato} para determinar la zona de despacho técnico y genera el radicado notificando al cliente de la misma forma.
+\end{enumerate}
 
 \subsubsection{HU-006: Registro y Seguimiento de PQRS}
 
@@ -396,21 +363,10 @@ Scenario: Reporte sin GPS disponible
 \vspace{6pt}
 \noindent\textit{Criterios de aceptación}
 
-\begin{lstlisting}[caption={HU-006 -- Criterios de Aceptación (Gherkin)}]
-Scenario: Cliente registra PQRS desde la aplicacion
-  Given el cliente ha iniciado sesion en el sistema
-  When completa el formulario y hace clic en Enviar
-  Then el sistema genera un numero de radicado unico
-  And notifica al cliente por correo y WhatsApp
-       con el numero de caso y el tiempo estimado
-       de respuesta
-
-Scenario: Notificacion de resolucion al cliente
-  Given la PQRS ha sido marcada como resuelta
-  When el sistema actualiza el estado del radicado
-  Then envia notificacion automatica por correo
-       y WhatsApp al cliente
-\end{lstlisting}
+\begin{enumerate}
+  \item \textbf{Cliente registra PQRS desde la aplicación:} dado que el cliente ha iniciado sesión en el sistema, cuando completa el formulario y hace clic en \textit{Enviar}, el sistema genera un número de radicado único y notifica al cliente por correo y WhatsApp con el número de caso y el tiempo estimado de respuesta.
+  \item \textbf{Notificación de resolución al cliente:} dado que la PQRS ha sido marcada como resuelta, cuando el sistema actualiza el estado del radicado, envía una notificación automática por correo y WhatsApp al cliente.
+\end{enumerate}
 
 % ============================================================
 \newpage
@@ -434,6 +390,7 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
 \section{Modelado Estático (UML 2.5.1)}
 % ============================================================
 
+\clearpage
 \subsection{Diagrama de Clases}
 
 \noindent La clase abstracta \texttt{Persona} centraliza los atributos comunes de identidad. Heredan de ella mediante relaciones de generalización las clases \texttt{Supervisor}, \texttt{Cliente} y \texttt{RecaudadorInstalador}. Un \texttt{Cliente} posee una relación de agregación con uno o más \texttt{Contador}. Cada \texttt{Contador} compone de forma estricta un historial de objetos \texttt{Lectura}, que incluye el atributo \texttt{esConsistente} y la enumeración \texttt{EstadoLectura}. Cuando la condición \texttt{esConsistente = false} se evalúa como verdadera, el sistema genera una instancia de \texttt{Anomalia} vinculada al \texttt{Supervisor} para su evaluación mediante el método \texttt{evaluarAnomalia()}. El módulo comercial integra las clases \texttt{Factura} (generada a partir de una lectura válida), \texttt{Pago}, \texttt{PQRS} y \texttt{Radicado} con captura de coordenadas GPS.
@@ -442,10 +399,11 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_clases.png
   % URL de descarga: https://github.com/user-attachments/assets/9dd72c89-1f8e-4d6f-bdf6-d997c4b8bad3
-  \includegraphics[width=0.95\textwidth]{diagrama_clases}
+  \includegraphics[width=1\textwidth]{diagrama_clases.jpg}
   \caption{\textit{Diagrama de Clases -- Modelo de Dominio del sistema CEDENAR Rural.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Paquetes}
 
 \noindent La estructura de código fuente adopta el patrón Domain-Driven Design / Layered Architecture bajo el espacio de nombres \texttt{com.cedenar.rural}. Cuatro paquetes con dependencias estrictamente unidireccionales: \texttt{controller} actúa como punto de entrada REST y accede a \texttt{service}, que contiene las implementaciones de lógica de negocio (incluyendo \texttt{MotorValidacionService}) y accede a \texttt{repository}, que gestiona la persistencia mediante el patrón DAO y usa \texttt{domain}. El paquete \texttt{domain} no tiene dependencias hacia ningún otro paquete y contiene exclusivamente las entidades puras del negocio.
@@ -454,10 +412,11 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_paquetes.png
   % URL de descarga: https://github.com/user-attachments/assets/b8dd4082-099d-4fb4-a904-57e9e43fc593
-  \includegraphics[width=0.65\textwidth]{diagrama_paquetes}
+  \includegraphics[width=0.65\textwidth]{diagrama_de_paquetes.jpeg}
   \caption{\textit{Diagrama de Paquetes -- Estructura de Código Fuente bajo patrón DDD/Layered.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Componentes}
 
 \noindent La arquitectura de software adopta el enfoque de Arquitectura Orientada a Servicios (SOA) con conectores Lollipop y Socket. Los tres frontends (Aplicación Móvil del Operario, Portal Web de Supervisión y Portal Web/App del Cliente) están desacoplados y consumen las interfaces provistas por el Backend sin acceso directo a las bases de datos. El Motor de Validación de Consumo y el Gestor de Radicados se comunican internamente con el Servicio de Notificaciones mediante flujos asíncronos. Los repositorios delegan la persistencia final al Servidor Central CEDENAR mediante JDBC/SQL.
@@ -466,10 +425,11 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_componentes.png
   % URL de descarga: https://github.com/user-attachments/assets/0e1f169e-0a6e-4b4a-8bd6-b031c3cebd90
-  \includegraphics[width=0.88\textwidth]{diagrama_componentes}
+  \includegraphics[width=0.88\textwidth]{diagrama_componentes.jpeg}
   \caption{\textit{Diagrama de Componentes -- Arquitectura de Software bajo patrón SOA.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Despliegue}
 
 \noindent El diagrama mapea los artefactos de software sobre tres nodos de hardware: el Dispositivo Móvil del Operario transmite datos mediante red celular o satelital con protocolo HTTPS/JSON; el PC de Escritorio del Supervisor se conecta por WAN corporativa; y el Dispositivo del Cliente accede mediante HTTPS público. El Servidor Cloud centraliza el cómputo de \textit{backend}. La integración con el Servidor Central CEDENAR usa VPN dedicada y JDBC/SQL sobre la Base de Datos Comercial. La pasarela PSE/PlaceToPay se consume como nodo externo mediante REST API sobre TLS; el sistema no almacena datos bancarios localmente.
@@ -478,7 +438,7 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_despliegue.png
   % URL de descarga: https://github.com/user-attachments/assets/48694deb-a298-4e39-9936-36aafa0cb2bf
-  \includegraphics[width=0.88\textwidth]{diagrama_despliegue}
+  \includegraphics[width=0.88\textwidth]{diagrama_despliegue.jpeg}
   \caption{\textit{Diagrama de Despliegue -- Infraestructura Física del sistema.}}
 \end{figure}
 
@@ -487,16 +447,18 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
 \section{Modelado Dinámico (UML 2.5.1)}
 % ============================================================
 
+\clearpage
 \subsection{Diagrama de Casos de Uso}
 
 \begin{figure}[H]
   \centering
   % IMAGEN: diagrama_casos_uso.png
   % URL de descarga: https://github.com/user-attachments/assets/7e1e6fcf-7122-4d94-9dd8-07acfbcde390
-  \includegraphics[width=0.88\textwidth]{diagrama_casos_uso}
+  \includegraphics[width=0.6\textwidth]{diagrama_casos_uso.png}
   \caption{\textit{Diagrama de Casos de Uso -- Interacciones entre actores y el sistema.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Actividades}
 
 \noindent El diagrama modela el flujo completo de captura de lecturas en campo mediante carriles que separan las responsabilidades entre el Operario, la Aplicación Móvil, el \textit{Backend} y el Supervisor. El flujo contempla explícitamente la ausencia de conexión: las lecturas se guardan localmente con estado pendiente y se sincronizan de forma autónoma al recuperar señal. Cuando la lectura es consistente, pasa a estado válido y se sincroniza con el servidor central. Cuando no lo es, queda en estado \textit{Observada} y se genera una alerta para revisión del Supervisor.
@@ -505,10 +467,11 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_actividades.png
   % URL de descarga: https://github.com/user-attachments/assets/f7cfb4fb-c9b0-46df-b0da-be4a388855bb
-  \includegraphics[width=0.92\textwidth]{diagrama_actividades}
+  \includegraphics[width=0.92\textwidth]{diagrama_actividad.png}
   \caption{\textit{Diagrama de Actividades -- Flujo completo de captura de lecturas en campo.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Secuencia}
 
 \noindent La secuencia modela la interacción cronológica durante la validación técnica de una lectura. El Operario captura la lectura en la Aplicación Móvil, que envía la solicitud al \textit{Backend}. El Motor de Validación evalúa el atributo \texttt{esConsistente}: cuando es verdadero, guarda la lectura como \texttt{VALIDADA}; cuando es falso, el Gestor de Anomalías crea una instancia \texttt{Anomalia} con estado \texttt{PENDIENTE} y notifica al Portal del Supervisor para su revisión.
@@ -517,10 +480,11 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: diagrama_secuencia.png
   % URL de descarga: https://github.com/user-attachments/assets/ff85b2fe-8cf2-486a-bf67-e578c346c1db
-  \includegraphics[width=0.95\textwidth]{diagrama_secuencia}
+  \includegraphics[width=0.95\textwidth]{diagrama_secuencia.png}
   \caption{\textit{Diagrama de Secuencia -- Validación técnica de una lectura de medidor.}}
 \end{figure}
 
+\clearpage
 \subsection{Diagrama de Máquina de Estados}
 
 \noindent El diagrama representa el ciclo de vida completo de una \texttt{Lectura} dentro del sistema. La lectura inicia en estado \texttt{Nueva} y avanza a \texttt{En captura} cuando el operario comienza el registro. Una vez confirmados el valor y la fotografía, pasa a \texttt{Capturada local}. Sin conexión, transiciona a \texttt{Pendiente de sincronización}; con conexión, avanza directamente a \texttt{En validación}. Si la condición \texttt{esConsistente = true} se cumple, la lectura pasa a \texttt{Validada} y luego a \texttt{Sincronizada con CEDENAR}, completando su ciclo. Si \texttt{esConsistente = false}, la lectura queda en estado \texttt{Observada} y se genera una instancia \texttt{Anomalia} pendiente. Desde ese estado, el Supervisor puede aprobar, rechazar u ordenar una recaptura.
@@ -529,7 +493,7 @@ Cuando el Operario de Campo ejecuta el proceso de toma de lectura (capa de negoc
   \centering
   % IMAGEN: maquina_estados.png
   % URL de descarga: https://github.com/user-attachments/assets/20c73dec-7b2b-4ff1-ab85-aa8405799c60
-  \includegraphics[width=0.95\textwidth]{maquina_estados}
+  \includegraphics[width=0.95\textwidth]{maquina_estados.png}
   \caption{\textit{Diagrama de Máquina de Estados -- Ciclo de vida de una Lectura.}}
 \end{figure}
 
@@ -684,7 +648,7 @@ Se revisaron cuatro soluciones existentes para verificar que los problemas ident
   % IMAGEN: vista_mobile.png
   % Archivo local: diagramas/vista mobile.png
   % Renombrar a vista_mobile.png y subir a Overleaf
-  \includegraphics[width=0.95\textwidth]{vista_mobile}
+  \includegraphics[width=0.95\textwidth]{vista_mobile.png}
   \caption{\textit{Prototipo de la Aplicación Móvil del Operario -- Vistas principales (Figma, alta fidelidad).}}
 \end{figure}
 
@@ -727,14 +691,12 @@ Se revisaron cuatro soluciones existentes para verificar que los problemas ident
 
 El repositorio completo con el código fuente está disponible en: \url{https://github.com/Jenifrutica/analisisCedenar}
 
+\clearpage
 \subsubsection{Función 1: Validación con Semáforo Visual}
 
 \noindent Pantalla de origen en el prototipo: pantalla de captura de lectura con indicador verde, amarillo o rojo. Trazabilidad: RF-05, HU-005, \texttt{MotorValidacionService} (Sección 3.2).
 
 \begin{lstlisting}[caption={LecturaService.kt -- Función validarLectura()}]
-// Compara la lectura nueva contra el historico del medidor.
-// Desviacion > 50%: ROJO (anomalia grave).
-// Desviacion entre 20% y 50%: AMARILLO (revisar antes de confirmar).
 fun validarLectura(nueva: Int, historico: List<Int>): Semaforo {
     if (historico.isEmpty()) return Semaforo.VERDE
     val promedio = historico.average()
@@ -747,14 +709,14 @@ fun validarLectura(nueva: Int, historico: List<Int>): Semaforo {
 }
 \end{lstlisting}
 
+\noindent La función compara el valor recién capturado contra el promedio del historial de ese medidor. Si el historial está vacío (medidor recién instalado), devuelve \texttt{VERDE} para no bloquear el registro. Cuando la nueva lectura supera en más del 50\% el promedio histórico, el resultado es \texttt{ROJO}, indicando una anomalía grave que deberá ser evaluada por el Supervisor. Una desviación entre el 20\% y el 50\% produce \texttt{AMARILLO}, señal de que el operario debe revisar el dato antes de confirmar. El resultado se traduce directamente en el color del indicador visual que aparece en la pantalla de captura del prototipo.
+
+\clearpage
 \subsubsection{Función 2: Guardado Offline con Cola de Reintentos}
 
 \noindent Pantalla de origen en el prototipo: pantalla ``Lectura guardada localmente'' con fondo verde, que aparece cuando el estado de la lectura es \texttt{PENDIENTE\_SYNC}. Trazabilidad: RF-05, RNF-04, HU-005 criterio ``Operación sin conexión a internet''.
 
 \begin{lstlisting}[caption={LecturaService.kt -- Funciones registrarLectura() y sincronizarPendientes()}]
-// Siempre persiste local primero. El dato nunca se pierde.
-// Si hay senal, sincroniza de inmediato.
-// Si no, WorkManager reintenta en segundo plano al recuperarla.
 fun registrarLectura(lectura: Lectura, hayConexion: Boolean): EstadoLectura {
     db.guardarLocal(lectura)
 
@@ -762,14 +724,10 @@ fun registrarLectura(lectura: Lectura, hayConexion: Boolean): EstadoLectura {
         sincronizarPendientes()
         EstadoLectura.SINCRONIZADA
     } else {
-        // PENDIENTE_SYNC es el estado que dispara la pantalla
-        // "Lectura guardada localmente" visible en el prototipo
         EstadoLectura.PENDIENTE_SYNC
     }
 }
 
-// Marca como SINCRONIZADA solo al recibir HTTP 200
-// Origen: DoD de HU-005
 fun sincronizarPendientes() {
     db.obtenerNoSincronizadas().forEach { lectura ->
         val exitoso = api.enviarLectura(lectura)
@@ -783,12 +741,14 @@ fun sincronizarPendientes() {
 }
 \end{lstlisting}
 
+\noindent \texttt{registrarLectura()} implementa el principio \textit{offline-first}: el primer paso siempre es guardar la lectura en el almacenamiento local del dispositivo, de modo que el dato nunca se pierde aunque la aplicación se cierre o el dispositivo pierda señal. Si hay conexión en ese momento, se llama de inmediato a \texttt{sincronizarPendientes()} y el estado final es \texttt{SINCRONIZADA}. Si no hay conexión, el estado queda en \texttt{PENDIENTE\_SYNC}, que es la condición que activa la pantalla ``Lectura guardada localmente'' visible en el prototipo. La función \texttt{sincronizarPendientes()} recorre todas las lecturas pendientes y las envía al servidor. Solo cambia el estado a \texttt{SINCRONIZADA} cuando recibe confirmación HTTP~200; si el servidor no responde, la lectura permanece en la cola para el siguiente intento de WorkManager.
+
+\clearpage
 \subsubsection{Función 3: Generación de Radicado y Reporte de Falla}
 
 \noindent Pantalla de origen en el prototipo: pantalla ``PQRS Registrado con Éxito'', donde el número \texttt{\#71906-3163-1682} visible define el formato del radicado. La función \texttt{reportarFalla()} implementa el \textit{fallback} GPS documentado en HU-003. Trazabilidad: RF-03, HU-003, HU-006, clase \texttt{Radicado} (Sección 3.1).
 
 \begin{lstlisting}[caption={RadicadoService.kt -- Funciones generarRadicado() y reportarFalla()}]
-// Formato visible en la pantalla del prototipo: #71906-3163-1682
 fun generarRadicado(tipo: String, zona: String, clienteId: String): Radicado {
     val numero = "#${(10000..99999).random()}-" +
                  "${(1000..9999).random()}-" +
@@ -800,9 +760,6 @@ fun generarRadicado(tipo: String, zona: String, clienteId: String): Radicado {
     return Radicado(numero = numero, tipo = tipo, zona = zona)
 }
 
-// Si el dispositivo no tiene GPS o el usuario nego el permiso,
-// la zona se determina desde el codigoContrato del cliente.
-// Origen: HU-003 criterio "Reporte sin acceso a GPS"
 fun reportarFalla(
     tipo: String,
     gps: Pair<Double, Double>?,
@@ -817,6 +774,8 @@ fun reportarFalla(
     return generarRadicado(tipo, zona, clienteId)
 }
 \end{lstlisting}
+
+\noindent \texttt{generarRadicado()} produce el número de caso en el formato \texttt{\#XXXXX-XXXX-XXXX} visible en la pantalla ``PQRS Registrado con Éxito'' del prototipo (el número \texttt{\#71906-3163-1682} que aparece en esa pantalla sigue ese mismo esquema). Además de construir el número, la función registra el evento en el log de auditoría y envía la notificación al cliente de forma inmediata. \texttt{reportarFalla()} maneja el \textit{fallback} de ubicación: si el dispositivo tiene GPS activo, determina la zona de despacho técnico a partir de las coordenadas geográficas; si el permiso de GPS no está disponible o fue denegado por el usuario, usa el \texttt{codigoContrato} del cliente para inferir la zona desde la base de datos comercial. En ambos casos la función termina llamando a \texttt{generarRadicado()}, de modo que el cliente recibe su número de caso sin importar el método de geolocalización utilizado.
 
 % ============================================================
 \newpage
